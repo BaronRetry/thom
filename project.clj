@@ -6,6 +6,8 @@
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.439" :scope "provided"]
+                 [org.clojure/java.jdbc "0.7.12"]
+                 [org.postgresql/postgresql "42.5.4"]
                  [com.cognitect/transit-clj "0.8.313"]
                  [ring "1.7.1"]
                  [ring/ring-defaults "0.3.2"]
@@ -18,7 +20,8 @@
                  [org.clojure/tools.namespace "0.2.11"]
                  [compojure "1.6.1"]
                  [re-frame "0.10.6"]
-                 [lambdaisland/garden-watcher "0.3.3"]]
+                 [lambdaisland/garden-watcher "0.3.3"]
+                 [cider/piggieback "0.5.3"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-environ "1.1.0"]]
@@ -102,16 +105,18 @@
   :profiles {:dev
              {:dependencies [[figwheel "0.5.18"]
                              [figwheel-sidecar "0.5.18"]
-                             [cider/piggieback "0.4.0"]
+                             [cider/piggieback "0.5.3"]
                              [cider/cider-nrepl "0.18.0"]
                              [lein-doo "0.1.11"]
-                             [reloaded.repl "0.2.4"]]
+                             [reloaded.repl "0.2.4"]
+                             [org.clojure/tools.nrepl "0.2.13"]]
 
               :plugins [[lein-figwheel "0.5.18"]
                         [lein-doo "0.1.11"]]
 
               :source-paths ["dev"]
-              :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}
+              :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+              :injections [(prn "Including dev profile")]}
 
              :uberjar
              {:source-paths ^:replace ["src/clj" "src/cljc"]

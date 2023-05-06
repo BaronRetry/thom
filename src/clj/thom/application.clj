@@ -7,7 +7,8 @@
             [system.components.middleware :refer [new-middleware]]
             [system.components.jetty :refer [new-web-server]]
             [thom.config :refer [config]]
-            [thom.routes :refer [home-routes]]))
+            [thom.routes :refer [home-routes]]
+            [thom.database]))
 
 (defn app-system [config]
   (component/system-map
@@ -24,3 +25,5 @@
     (-> config
         app-system
         component/start)))
+
+(prn thom.database/pg-result)
