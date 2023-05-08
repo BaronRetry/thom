@@ -13,6 +13,8 @@
          io/input-stream
          response
          (assoc :headers {"Content-Type" "text/html; charset=utf-8"})))
-   (GET "/notes/:id" params handlers/note-by-id)
+   (GET "/notes/:id" params handlers/get-note-by-id)
+   (POST "/make-note" params (handlers/make-note params))
+
    (resources "/")))
 
