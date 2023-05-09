@@ -9,5 +9,5 @@
 
 (defn make-note
   [params]
-  (println params)
+  (println (vec params))
   )
